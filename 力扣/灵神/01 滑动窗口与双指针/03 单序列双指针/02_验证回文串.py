@@ -1,7 +1,18 @@
 # Leetcode:125
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        # 将字符串中的给字母数字字符删除
-        res = s
-        for ch in s:
-            if (ord(ch) >= 65 and ord(ch) <= 90) or (ord(ch) >= 97 and ord(ch) <= 132):
+        # 提取字符串中的字母和数字
+        cleaned = ''.join([ch for ch in s if ch.isalnum()])
+        cleaned = cleaned.lower()
+        left = 0
+        right = len(cleaned) - 1
+        while left <= right:
+            if cleaned[left] != cleaned[right]:
+                return False
+            left += 1
+            right -= 1
+        return True
+
+s = Solution()
+ans = s.isPalindrome("0P")
+print(ans)
