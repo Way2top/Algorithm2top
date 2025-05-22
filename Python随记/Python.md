@@ -357,6 +357,8 @@ $$
 
 ### 22. PCA
 
+
+
 ### 23. Kmeans
 
 
@@ -526,11 +528,35 @@ def bisect_left(nums, target):
 
 
 
+### 05. 前缀和
+
+一般来说，前缀和第一时间想到的实现是：
+
+创建一个和 nums 长度一致的 prefix 数组，然后进行以下操作来实现
+
+```python
+n = len(nums)
+prefix = [0] * n
+
+for i in range(n):
+    if i == 0:
+        prefix[i] = nums[i]
+    prefix[i] = prefix[i - 1] + nums[i]
+```
+
+但是这样会导致两个问题，第一，当 left = 0 的时候需要进行特判；第二，如果 nums 是空数组，这种写法无法兼容。
 
 
 
+为了解决上述问题，选择初始化一个长度为 n + 1 的 prefix 即可解决
 
+```python
+n = len(nums)
+prefix = [0] * (n + 1)
 
+for i, x in enumerate(nums):
+    prefix[i + 1] = prefix[i] + x 
+```
 
 
 
