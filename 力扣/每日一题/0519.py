@@ -19,3 +19,6 @@ class Solution:
         if (x + y) > z and (x + z) > y and (y + z) > x:
             return True
         return False
+
+s = Solution()
+res = s.is_triangle

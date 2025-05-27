@@ -1,4 +1,3 @@
-# Leetcode:3152
 class Solution:
     def isArraySpecial(self, nums: list[int], queries: list[list[int]]) -> list[bool]:
         n = len(nums)
@@ -8,8 +7,6 @@ class Solution:
                 prefix[i] = prefix[i - 1] + 1
             else:
                 prefix[i] = prefix[i - 1]
-        
-        # 遍历 queries
         res = []
         for left, right in queries:
             if prefix[right] - prefix[left] == 0:
