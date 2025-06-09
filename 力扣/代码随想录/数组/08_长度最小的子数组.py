@@ -16,6 +16,3 @@ class Solution:
         if count == 0:
             return 0
         return res
-
-s = Solution()
-print(s.minSubArrayLen(15, [1,2,3,4,5]))
