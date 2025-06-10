@@ -12,8 +12,8 @@ from PyQt5.QtGui import QFont, QIcon, QColor, QPalette, QPainter, QPen, QBrush, 
 TOTAL_TIME = 90 * 60
 
 # 每次提示间隔的最小最大秒数
-MIN_INTERVAL = 2 * 60
-MAX_INTERVAL = 5 * 60
+MIN_INTERVAL = 2
+MAX_INTERVAL = 5
 
 # 音频文件路径（和程序放同一目录）
 FOCUS_SOUND_FILE = "专注声音.mp3"  # 2-5分钟时播放（支持mp3或wav）
