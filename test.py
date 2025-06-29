@@ -1,2 +1,4 @@
-for i in range(10, 0, -1):
-    print(i)
+a = 000000
+b = str(a)
+print(b)
+print(type(b))

@@ -13,7 +13,6 @@
 # O(N)   双指针
 class Solution:
     def sortedSquares(self, nums: list[int]) -> list[int]:
-        left = 0
         right = len(nums) - 1
         if left == right:
             return [nums[0]**2]
