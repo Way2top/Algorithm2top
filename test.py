@@ -1,4 +1,2 @@
-a = 000000
-b = str(a)
-print(b)
-print(type(b))
+a = 15
+print(hex(id(a)))
