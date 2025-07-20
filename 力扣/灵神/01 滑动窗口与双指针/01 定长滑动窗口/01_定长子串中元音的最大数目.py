@@ -1,51 +1,24 @@
-# # Leetcode：1456
-# class Solution:
-#     def maxVowels(self, s: str, k: int) -> int:
-#         vowel = ('a', 'e', 'i', 'o', 'u')
-#         count = 0  # 记录包含元音字母的个数
-#         res = 0
-#
-#         n = len(s)
-#         # 先把第一组的算出来
-#         for i in range(k):
-#             if s[i] in vowel:
-#                 count += 1
-#                 res = count
-#
-#         for i in range(1, n - k + 1):
-#             if s[i - 1] in vowel:
-#                 count -= 1
-#             if s[i - 1 + k] in vowel:
-#                 count += 1
-#
-#             res = max(res, count)
-#         return res
-#
-#
-# solution = Solution()
-# ans = solution.maxVowels('abciiidef', 3)
-# print(ans)
-
 # Leetcode：1456
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
+        n = len(s)
         vowel = ('a', 'e', 'i', 'o', 'u')
-        count = 0
+        left = 0
+        right = k - 1 
         res = 0
-
-        for i, c in enumerate(s):
-            if c in vowel:
-                count += 1
-            if i < k - 1:
-                continue
-
-            res = max(count, res)
-
-            if s[i - k + 1] in vowel:
-                count -= 1
+        for i in range(k):
+            if s[i] in vowel:
+                res += 1
+        temp = res
+        for right in range(k, n):
+            if s[left] in vowel:
+                temp -= 1
+            left += 1
+            if s[right] in vowel:
+                temp += 1
+            res = max(res, temp)
         return res
 
-
-solution = Solution()
-ans = solution.maxVowels('abciiidef', 3)
-print(ans)
+s = Solution()
+res = s.maxVowels("abciiidef", 3)
+print(res)

@@ -1,19 +1,25 @@
 # Leetcode：1343
 class Solution:
     def numOfSubarrays(self, arr: list[int], k: int, threshold: int) -> int:
-        res = 0
         n = len(arr)
+        target = k * threshold
         total = 0
-
+        left = 0
+        res = 0
         for i in range(k):
             total += arr[i]
 
-        if total >= k * threshold:
+        if total >= target:
             res += 1
-
-        for i in range(1, n - k + 1):
-            total -= arr[i - 1]
-            total += arr[i - 1 + k]
-            if total >= k * threshold:
+            
+        for right in range(k, n):
+            total -= arr[left]
+            left += 1
+            total += arr[right]
+            if total >= target:
                 res += 1
         return res
+
+s = Solution()
+ans = s.numOfSubarrays([2,2,2,2,5,5,5,8], 3, 4)
+print(ans)
