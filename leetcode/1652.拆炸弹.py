@@ -7,8 +7,9 @@
 # @lc code=start
 class Solution:
     def decrypt(self, code: list[int], k: int) -> list[int]:
-        n = len(code)
+        d_code = code * 2
         
+
         
 # @lc code=end
 
