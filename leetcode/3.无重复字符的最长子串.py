@@ -7,16 +7,14 @@
 # @lc code=start
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        letter = {}
+        dic = {}
         res = 0
         left = 0
         for right, ch in enumerate(s):
-            letter[ch] = letter.get(ch, 0) + 1
-            while letter[ch] > 1:
-                letter[s[left]] -= 1
-                left += 1
+            if ch in dic and dic[ch] >= left:
+                left = dic[ch] + 1
+            dic[ch] = right
             res = max(res, right - left + 1)
-        
         return res
 # @lc code=end
 
