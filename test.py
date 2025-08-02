@@ -1,8 +1,5 @@
-s = 'abcd'
-t = 'bcdf'
-res = []
-
-for i in range(len(s)):
-    res.append(abs(ord(s[i]) - ord(t[i])))
-
-print(res)
+a = [1, 2 ,3]
+b = a
+b[0] = 4
+print(f'a = {a}')
+print(f'b = {b}')
