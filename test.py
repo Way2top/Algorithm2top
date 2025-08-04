@@ -1,5 +1,2 @@
-a = [1, 2 ,3]
-b = a
-b[0] = 4
-print(f'a = {a}')
-print(f'b = {b}')
+s = '12345'
+print(type(s[1]))
