@@ -1,2 +1,2 @@
-s = '12345'
-print(type(s[1]))
+dic = {1:0, 2:0, 3:0}
+print(str(dic.keys()))
