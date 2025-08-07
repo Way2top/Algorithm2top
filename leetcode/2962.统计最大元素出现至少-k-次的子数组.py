@@ -8,8 +8,8 @@
 class Solution:
     def countSubarrays(self, nums: list[int], k: int) -> int:
         target = max(nums)
-        left = res = 0
-        cnt = 0
+        left = cnt = 0
+        res = 0
         for x in nums:
             if x == target:
                 cnt += 1

@@ -9,18 +9,21 @@ class Solution:
     def shortestBeautifulSubstring(self, s: str, k: int) -> str:
         if s.count('1') < k:
             return ''
-        count = 0
-        left = 0
-        ans = s
-        for right, c in enumerate(s):
-            count += int(c)
-            while count > k or s[left] == '0':
-                count -= int(s[left])
+        ans = s # s 一定满足条件
+        cnt = left = 0
+        for right, ch in enumerate(s):
+            if ch == '1':
+                cnt += 1
+            while cnt > k or s[left] == '0':
+                if s[left] == '1':
+                    cnt -=1
                 left += 1
-            if count == k:
+            if cnt == k:
                 temp = s[left : right + 1]
                 if len(temp) < len(ans) or len(temp) == len(ans) and temp < ans:
                     ans = temp
         return ans
+
+        
 # @lc code=end
 
