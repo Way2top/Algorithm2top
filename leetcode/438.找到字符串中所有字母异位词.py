@@ -3,24 +3,25 @@
 #
 # [438] 找到字符串中所有字母异位词
 #
-from collections import Counter
+from collections import Counter, defaultdict
 # @lc code=start
 class Solution:
     def findAnagrams(self, s: str, p: str) -> list[int]:
-        p_counter = Counter(p)
-        window = Counter()
-        left = right = 0
+        p_cnt = Counter(p)
+        s_cnt = Counter()
+        left = 0
         res = []
-        while right < len(s):
-            window[s[right]] += 1
-            if right - left + 1 > len(p):
-                window[s[left]] -= 1
-                if window[s[left]] == 0:
-                    del window[s[left]]
+        for right, ch in enumerate(s):
+            s_cnt[ch] += 1
+            # 维护窗口长度为 len(p)
+            if right >= len(p):
+                s_cnt[s[left]] -= 1
+                if s_cnt[s[left]] == 0:
+                    del s_cnt[s[left]] 
                 left += 1
-            if right - left + 1 == len(p) and p_counter == window:
+            if p_cnt == s_cnt:
                 res.append(left)
-            right += 1
         return res
+        
 # @lc code=end
 
