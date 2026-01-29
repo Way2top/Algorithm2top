@@ -3,32 +3,22 @@ class Solution:
         m, n = len(board), len(board[0])
         visited = [[False] * n for _ in range(m)]
 
-        def dfs(x: int, y: int, idx: int) -> bool:
-            # 1. 当前字符不匹配，直接失败
-            if board[x][y] != word[idx]:
+        def dfs(x: int, y: int, start: int) -> bool:
+            if board[x][y] != word[start]:
                 return False
-
-            # 2. 已经匹配到最后一个字符
-            if idx == len(word) - 1:
+            if start == len(word) - 1: # 如果 board[x][y] == word[start] 且 start 为 word 的最后一个元素的下标
                 return True
-
-            visited[x][y] = True
-
-            # 3. 向四个方向扩散
-            for dx, dy in [(-1,0), (1,0), (0,-1), (0,1)]:
-                nx, ny = x + dx, y + dy
-                if 0 <= nx < m and 0 <= ny < n and not visited[nx][ny]:
-                    if dfs(nx, ny, idx + 1):
+            # 开始对当前元素 board[x][y] 进行操作
+            visited[x][y] = True # 标记为已使用
+            for dx, dy in [(x+1, y), (x-1, y), (x, y+1), (x, y-1)]:
+                if 0<= dx < m and 0 <= dy < n and not visited[dx][dy]:
+                    if dfs(dx, dy, start+1):
                         return True
-
-            # 4. 回溯
             visited[x][y] = False
             return False
-
-        # 5. 枚举起点
+                
         for i in range(m):
             for j in range(n):
                 if dfs(i, j, 0):
                     return True
-
         return False
